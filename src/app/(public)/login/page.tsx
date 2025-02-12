@@ -107,7 +107,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-sm text-gray-600">
-          Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
           <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
             Create account
           </a>

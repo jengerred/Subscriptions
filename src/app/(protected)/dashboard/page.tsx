@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { verifyJWT } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import connectDB from '@/lib/db';
-import { User } from '@/models/User';
+import { User, IUser } from '@/models/User';
 import { ArrowTopRightOnSquareIcon, BanknotesIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 
 export default async function Dashboard() {
@@ -17,7 +17,7 @@ export default async function Dashboard() {
     
     const user = await User.findById(payload.userId)
       .select('firstName email createdAt')
-      .lean();
+      .lean<IUser>();
 
     if (!user) redirect('/login');
 
@@ -87,7 +87,7 @@ export default async function Dashboard() {
 <br/>
             <div className="mb-3 p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-blue-800">
-                  * Note: We're already displaying user first name (<span className="font-mono font-medium">{user.firstName}</span>), 
+                  * Note: We&apos;re already displaying user first name (<span className="font-mono font-medium">{user.firstName}</span>), 
                 and we could include user email (<span className="font-mono font-medium">{user.email}</span>), 
                   and account creation date (<span className="font-mono font-medium">
                     {new Date(user.createdAt).toLocaleDateString('en-US', {
@@ -125,7 +125,7 @@ export default async function Dashboard() {
               * Note: Below is a logout button with built-in functionality to securely log out users. 
             You can place this button anywhere in your application,
              such as at the bottom of the dashboard or within a navbar for easy access. 
-             Additionally, you can customize its style to match your app's design and branding.</p>
+             Additionally, you can customize its style to match your app&apos;s design and branding.</p>
              </div>
 
             {/* Centered Logout Button */}

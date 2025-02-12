@@ -4,6 +4,10 @@ import { createJWT } from '@/lib/auth';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
 
+export const config = {
+  runtime: 'nodejs', // Use Node.js runtime instead of Edge
+};
+
 const registerSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string()

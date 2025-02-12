@@ -4,6 +4,10 @@ import { User } from '@/models/User';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
 
+export const config = {
+  runtime: 'nodejs', // Use Node.js runtime instead of Edge
+};
+
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8)
@@ -65,6 +69,6 @@ export async function POST(request: Request) {
     status: 500,
     headers: { 'Content-Type': 'application/json' }
   });
-  
+
   }
 }
