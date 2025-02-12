@@ -38,23 +38,23 @@ export default async function Dashboard() {
                    
 
             
-              <div className="flex flex-col sm:flex-row gap-4 justify-center"> {/* Added container */}
-    <a
-      href="/docs/customization"
-      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-    >
-      Learn How to Add User Data
-      <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />
-    </a>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center"> {/* Added container */}
+                  <a
+                    href="/docs/customization"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                  >
+                    Learn How to Add User Data
+                    <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />
+                  </a>
 
-    <a
-      href="/docs/customization"
-      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors"
-    >
-      Learn How to Customize UI
-      <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />
-    </a>
-  </div>
+                  <a
+                    href="/docs/customization"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors"
+                  >
+                    Learn How to Customize UI
+                    <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />
+                  </a>
+                </div>
 
             </div>
 
