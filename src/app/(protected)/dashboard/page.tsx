@@ -35,7 +35,8 @@ export default async function Dashboard() {
                 This protected page serves as a foundation for any application. 
                 Customize it to build anything from banking apps to SaaS platforms.
               </p>
-                 
+                   
+
             
               <div className="flex flex-col sm:flex-row gap-4 justify-center"> {/* Added container */}
     <a
@@ -86,7 +87,7 @@ export default async function Dashboard() {
 <br/>
             <div className="mb-3 p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-blue-800">
-                  Note: We're already displaying user first name (<span className="font-mono font-medium">{user.firstName}</span>), 
+                  * Note: We're already displaying user first name (<span className="font-mono font-medium">{user.firstName}</span>), 
                 and we could include user email (<span className="font-mono font-medium">{user.email}</span>), 
                   and account creation date (<span className="font-mono font-medium">
                     {new Date(user.createdAt).toLocaleDateString('en-US', {
@@ -118,9 +119,38 @@ export default async function Dashboard() {
                 </div>
               </div>
             </div>
+         <br/>
+            <div className="mb-3 p-4 bg-blue-50 rounded-lg">
+            <p className="text-sm text-blue-800">
+              * Note: Below is a logout button with built-in functionality to securely log out users. 
+            You can place this button anywhere in your application,
+             such as at the bottom of the dashboard or within a navbar for easy access. 
+             Additionally, you can customize its style to match your app's design and branding.</p>
+             </div>
+
+            {/* Centered Logout Button */}
+            <div className="className=mt-6 text-center">
+              <form action="/api/auth/logout" method="POST">
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors"
+                >
+                  Logout
+                </button>
+              </form>
+            </div>
+
           </div>
+          <footer className="mt-12 text-center text-sm text-gray-500">
+  <p>
+    Built with ❤️ using Next.js and Tailwind CSS. 
+    <a href="https://github.com/jengerred/Reusable-NEXT-User-Auth"    target="_blank"
+    rel="noopener noreferrer" className="text-blue-600 hover:underline">View on GitHub</a>.
+  </p>
+</footer>
         </main>
       </div>
+      
     );
 
   } catch (error) {
