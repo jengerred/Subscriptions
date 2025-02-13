@@ -7,16 +7,19 @@ export default function Home() {
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
     
       <div className="text-center">
-        <p className="mb-4 text-neutral-600 dark:text-neutral-400">
+       
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Welcome to your app! </h1>
 
-          <strong>Congrats on setting up your super-secure user authentication!</strong> 
-            Your login and registration functionality is fully integrated with MongoDB, ensuring that user data is stored securely. 
-          </p>
-          <p> This is your homepage/landing page. It serves as an introduction to your app where you can guide users
-          to log in, create an account, or explore other features. You can use the following links at any entry point in your app.
-          </p>
+          <p className="mb-4 text-neutral-600 dark:text-neutral-400">
+          <strong>🎈🎊 Congrats 🎉  on setting up your super-secure user authentication! 🔐</strong> 
+            <br/>Your login and registration functionality is fully integrated with MongoDB, ensuring that user data is stored securely. 
+            <br/><br/><strong>This page is your homepage/landing page.</strong><br/>
+            It serves as an introduction to your app where you can guide users
+              to log in, create an account, or explore other features. 
+              <br/><br/><strong> 🔐 You can use the following links at any entry point in your app. 🔑🔒</strong>
+              </p>
+
         <div className="flex gap-4 justify-center">
           <a
             href="/register"
