@@ -8,7 +8,8 @@ export default function Home() {
     
       <div className="text-center">
         <p className="mb-4 text-neutral-600 dark:text-neutral-400">
-          Welcome to your app! This is your homepage/landing page. 
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          Welcome to your app! This is your homepage/landing page. </h1>
             It serves as an introduction to your app where you can guide users
           to log in or create an account if needed.
         </p>
