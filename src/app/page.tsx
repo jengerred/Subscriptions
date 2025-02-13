@@ -9,12 +9,15 @@ export default function Home() {
       <div className="text-center">
         <p className="mb-4 text-neutral-600 dark:text-neutral-400">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Welcome to your app! This is your homepage/landing page. </h1>
-            It serves as an introduction to your app where you can guide users
-          to log in or create an account if needed.
-        </p>
+          Welcome to your app! </h1>
+
+          <strong>Congrats on setting up your super-secure user authentication!</strong> 
+            Your login and registration functionality is fully integrated with MongoDB, ensuring that user data is stored securely. </P>
+   
+          <p> This is your homepage/landing page. It serves as an introduction to your app where you can guide users
+          to log in, create an account, or explore other features. You can use the following links at any entry point in your app.
+          </p>
         <div className="flex gap-4 justify-center">
-          {/* Example Links */}
           <a
             href="/register"
             className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-medium"
