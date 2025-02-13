@@ -12,8 +12,8 @@ export default function Home() {
           Welcome to your app! </h1>
 
           <strong>Congrats on setting up your super-secure user authentication!</strong> 
-            Your login and registration functionality is fully integrated with MongoDB, ensuring that user data is stored securely. </P>
-   
+            Your login and registration functionality is fully integrated with MongoDB, ensuring that user data is stored securely. 
+          </p>
           <p> This is your homepage/landing page. It serves as an introduction to your app where you can guide users
           to log in, create an account, or explore other features. You can use the following links at any entry point in your app.
           </p>
