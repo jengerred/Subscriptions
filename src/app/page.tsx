@@ -5,25 +5,30 @@ export default function Home() {
  
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    
       <div className="text-center">
         <p className="mb-4 text-neutral-600 dark:text-neutral-400">
-          This is your home page or your landing page. You can modify this accordingly.
+          Welcome to your app! This is your homepage/landing page. 
+            It serves as an introduction to your app where you can guide users
+          to log in or create an account if needed.
         </p>
         <div className="flex gap-4 justify-center">
+          {/* Example Links */}
           <a
             href="/register"
             className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-medium"
           >
-            Get Started
+            Create Account
           </a>
           <a
             href="/login"
             className="px-6 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-sm font-medium"
           >
-            Sign In
+            Login
           </a>
         </div>
       </div>
+
 <Image
           className="dark:invert"
           src="/next.svg"
