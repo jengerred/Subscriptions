@@ -17,7 +17,7 @@ export default function Home() {
                 <br/>Check out the secure user authentication system you created! </p>
         
     {/* Links to registration and login */}
-          <br/><br/><div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center">
               <a
                 href="/register"
                 className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-medium"
