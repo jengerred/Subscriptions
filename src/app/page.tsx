@@ -32,12 +32,14 @@ export default function Home() {
               </a>
           </div>
     {/* End of Links */}
-    <br/><br/><br/>
+      <div className="mt-20">
             <p>
            <strong>This page is your homepage/landing page.</strong><br/>
             It serves as an introduction to your app where you can guide users
               to log in, create an account, or explore other features. 
             </p>
+      </div>
+      
       </div>
     
       <div className="mx-auto w-fit">
