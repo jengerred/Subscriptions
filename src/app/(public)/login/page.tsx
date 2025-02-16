@@ -6,12 +6,12 @@ import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
 export default function Login() {
   const router = useRouter();
-  const [error, setError] = useState<string | null>(null); // State to store error messages.
+  const [errorMessages, setErrorMessages] = useState<string[]>([]); // State to store multiple error messages.
   const [isLoading, setIsLoading] = useState(false); // State to track loading status.
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null); // Clear previous errors.
+    setErrorMessages([]); // Clear previous errors.
     setIsLoading(true); // Set loading state.
 
     const formData = new FormData(e.currentTarget);
@@ -29,12 +29,17 @@ export default function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Login failed'); // Display specific backend error or fallback message.
+        if (data.errors) {
+          setErrorMessages(data.errors.map((err: { message: string }) => err.message)); // Display specific error messages.
+        } else {
+          throw new Error(data.error || 'Login failed');
+        }
+        return;
       }
 
       router.push('/dashboard'); // Redirect to dashboard on successful login.
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred'); // Set specific error message.
+      setErrorMessages([err instanceof Error ? err.message : 'An unexpected error occurred']);
     } finally {
       setIsLoading(false); // Reset loading state.
     }
@@ -89,11 +94,13 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Error Message */}
-          {error && (
-            <div className="p-3 text-sm text-red-700 bg-red-50 rounded-md">
-              {error}
-            </div>
+          {/* Error Messages */}
+          {errorMessages.length > 0 && (
+            <ul className="p-3 text-sm text-red-700 bg-red-50 rounded-md list-disc list-inside">
+              {errorMessages.map((msg, index) => (
+                <li key={index}>{msg}</li>
+              ))}
+            </ul>
           )}
 
           {/* Submit Button */}

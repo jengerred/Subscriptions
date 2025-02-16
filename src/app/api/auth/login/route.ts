@@ -16,34 +16,34 @@ const loginSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    await connectDB(); // Establish a connection to MongoDB.
+    await connectDB(); // Connect to MongoDB.
 
     const data = await request.json(); // Parse incoming JSON request body.
 
     // Validate input data against the schema.
     const result = loginSchema.safeParse(data);
     if (!result.success) {
+      const errors = result.error.issues.map((issue) => ({
+        field: issue.path[0],
+        message: issue.message,
+      }));
+
       return new Response(
-        JSON.stringify({
-          error: 'Invalid input',
-          details: result.error.errors.map((err) => ({
-            field: err.path[0],
-            message: err.message,
-          })),
-        }),
-        { status: 400 }
+        JSON.stringify({ errors }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     const { email, password } = result.data;
 
     // Check if user exists in the database.
-    const user = await User.findOne({ email }).select('+password'); // Include hashed password in query.
-
+    const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return new Response(
-        JSON.stringify({ error: 'Email not found' }),
-        { status: 404 }
+        JSON.stringify({
+          errors: [{ field: 'email', message: 'Email not found' }],
+        }),
+        { status: 404, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
@@ -51,15 +51,17 @@ export async function POST(request: Request) {
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
       return new Response(
-        JSON.stringify({ error: 'Incorrect password' }),
-        { status: 401 }
+        JSON.stringify({
+          errors: [{ field: 'password', message: 'Incorrect password' }],
+        }),
+        { status: 401, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     // Generate a JWT token for the authenticated user.
     const token = await createJWT(user._id.toString());
 
-    // Set a secure cookie with the token.
+    // Set a secure HTTP-only cookie with the token.
     const cookieStore = await cookies();
     cookieStore.set('token', token, {
       httpOnly: true,
@@ -71,16 +73,20 @@ export async function POST(request: Request) {
 
     return new Response(
       JSON.stringify({
-        firstName: user.firstName,
-        email: user.email,
+        success: true,
+        user: {
+          id: user._id,
+          email: user.email,
+          firstName: user.firstName,
+        },
       }),
-      { status: 200 }
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error) {
     console.error('Login error:', error);
     return new Response(
-      JSON.stringify({ error: 'An unexpected error occurred' }),
-      { status: 500 }
+      JSON.stringify({ errors: [{ message: 'Internal server error' }] }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
 }

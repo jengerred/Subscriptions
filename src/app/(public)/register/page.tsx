@@ -31,7 +31,7 @@ export default function Register() {
 
       if (!response.ok) {
         if (data.errors) {
-          setErrorMessages(data.errors.map((err) => err.message)); // Display specific error messages.
+          setErrorMessages(data.errors.map((err: { message: string }) => err.message)); // Explicitly type "err".
         } else {
           throw new Error(data.error || 'Registration failed');
         }
@@ -39,8 +39,12 @@ export default function Register() {
       }
 
       router.push('/dashboard'); // Redirect to dashboard on successful registration.
-    } catch (err) {
-      setErrorMessages([err instanceof Error ? err.message : 'An unexpected error occurred']);
+    } catch (err: unknown) { // Explicitly type "err" as "unknown".
+      if (err instanceof Error) {
+        setErrorMessages([err.message]); // Handle known error types.
+      } else {
+        setErrorMessages(['An unexpected error occurred']); // Handle unknown error types.
+      }
     } finally {
       setIsLoading(false); // Reset loading state.
     }
