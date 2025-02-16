@@ -84,7 +84,7 @@ export default function Login() {
                 type="password"
                 required
                 className="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="••••••••"
+                placeholder="••••••••••••"
               />
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-sm text-gray-600">
-        Don&apos;t have an account?{' '}
+        Don&apos;thave an account?{' '}
           <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
             Create account
           </a>
