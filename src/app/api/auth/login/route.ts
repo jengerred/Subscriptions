@@ -11,7 +11,7 @@ export const config = {
 // Define a schema for validating login input using Zod.
 const loginSchema = z.object({
   email: z.string().email('Invalid email format'), // Custom error message for invalid email format.
-  password: z.string().min(12, 'Password must be at least 12 characters long'), // Custom error message for short passwords.
+  password: z.string().min(8, 'Password must be at least 8 characters long'), // Custom error message for short passwords.
 });
 
 export async function POST(request: Request) {

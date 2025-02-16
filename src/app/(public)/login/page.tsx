@@ -6,41 +6,39 @@ import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
 export default function Login() {
   const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null); // State to store error messages.
+  const [isLoading, setIsLoading] = useState(false); // State to track loading status.
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
-    setIsLoading(true);
+    setError(null); // Clear previous errors.
+    setIsLoading(true); // Set loading state.
 
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: formData.get('email'),
-          password: formData.get('password')
+          password: formData.get('password'),
         }),
       });
 
-   
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
+        throw new Error(data.error || 'Login failed'); // Display specific backend error or fallback message.
       }
 
-      router.push('/dashboard');
+      router.push('/dashboard'); // Redirect to dashboard on successful login.
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred'); // Set specific error message.
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Reset loading state.
     }
   };
-
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -51,6 +49,7 @@ export default function Login() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-sm">
+          {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
@@ -64,12 +63,13 @@ export default function Login() {
                 name="email"
                 type="email"
                 required
-                className="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
+          {/* Password Input */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
@@ -83,31 +83,34 @@ export default function Login() {
                 name="password"
                 type="password"
                 required
-                className="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="••••••••••••"
+                className="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder="••••••••"
               />
             </div>
           </div>
 
+          {/* Error Message */}
           {error && (
             <div className="p-3 text-sm text-red-700 bg-red-50 rounded-md">
               {error}
             </div>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm 
-              text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 
-              disabled:opacity-50 transition-colors"
+            className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm 
+                        text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-500 
+                        disabled:bg-blue-300 transition-colors`}
           >
             {isLoading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
 
+        {/* Link to Registration Page */}
         <p className="text-center text-sm text-gray-600">
-        Don&apos;thave an account?{' '}
+          Don&apos;t have an account?{' '}
           <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
             Create account
           </a>
