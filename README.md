@@ -96,7 +96,7 @@ To deploy this project using Vercel:
 2. Log in to [Vercel](https://vercel.com/) and import your repository.
 3. Add the environment variables (`MONGODB_URI`, `JWT_SECRET`, `NODE`, 
 
-Runtime`) in Vercel's dashboard under "Environment Variables."
+`Runtime`) in Vercel's dashboard under "Environment Variables."
 4. Deploy your project with one click!
 
 ---
