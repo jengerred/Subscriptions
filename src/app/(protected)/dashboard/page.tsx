@@ -97,7 +97,7 @@ export default async function Dashboard() {
             {/* NOTE: This section demonstrates how to display user-specific data. Modify or remove as needed */}
            <div className="mt-6 mb-3 p-4 bg-blue-50 rounded-lg">
            <p className="text-sm text-blue-800">
-                * Note: We're already displaying user first name ({user.firstName}), 
+                * Note: We&apos;re already displaying user first name ({user.firstName}), 
                 and we could include user email ({user.email}), 
                 and account creation date ({new Date(user.createdAt).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -136,7 +136,7 @@ export default async function Dashboard() {
                 * Note: Below is a logout button with built-in functionality to securely log out users. 
                 You can place this button anywhere in your application,
                 such as at the bottom of the dashboard or within a navbar for easy access. 
-                Additionally, you can customize its style to match your app's design and branding.
+                Additionally, you can customize its style to match your app&apos;s design and branding.
               </p>
             </div>
 
