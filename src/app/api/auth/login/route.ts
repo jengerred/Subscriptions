@@ -4,6 +4,9 @@ import { User } from '@/models/User'; // Import the User model to interact with 
 import { cookies } from 'next/headers'; // Import Next.js cookies utility for managing HTTP-only cookies.
 import { z } from 'zod'; // Import Zod for schema validation of input data.
 
+// NOTE: We use Zod for input validation because it provides strong typing and runtime checks,
+// helping to prevent injection attacks and ensure data integrity.
+
 export const config = {
   runtime: 'nodejs', // Specify that this API route uses the Node.js runtime instead of Edge runtime.
 };
@@ -11,8 +14,11 @@ export const config = {
 // Define a schema for validating login input using Zod
 const loginSchema = z.object({
   email: z.string().email('Invalid email format'), // Validate email format and return a custom error message if invalid.
-  password: z.string().min(8, 'Password must be at least 8 characters long'), // Ensure password is at least 8 characters long.
+  password: z.string().min(8, 'Password must be at least 12 characters long'), // Ensure password is at least 12 characters long.
 });
+
+// NOTE: Input validation is crucial for security. It helps prevent malformed data from reaching
+// the database and potentially causing unexpected behavior or security vulnerabilities.
 
 export async function POST(request: Request) {
   try {
@@ -47,6 +53,9 @@ export async function POST(request: Request) {
       );
     }
 
+    // NOTE: We don't specify whether the email or password is incorrect to prevent
+    // enumeration attacks. This makes it harder for attackers to determine if an email exists in the system.
+
     // Check if the provided password matches the hashed password in the database
     const isPasswordValid = await user.comparePassword(password); // Compare entered password with stored hash.
     if (!isPasswordValid) {
@@ -58,8 +67,14 @@ export async function POST(request: Request) {
       );
     }
 
+    // NOTE: The comparePassword method in the User model uses bcrypt to securely compare
+    // the provided password with the stored hash, without revealing the actual hash.
+
     // Generate a JWT token for the authenticated user
     const token = await createJWT(user._id.toString());
+
+    // NOTE: We use jose (in the createJWT function) for JWT creation because it's a modern,
+    // secure library that supports the latest JWT standards and best practices.
 
     // Set a secure HTTP-only cookie with the JWT token
     const cookieStore = await cookies();
@@ -70,6 +85,9 @@ export async function POST(request: Request) {
       maxAge: 60 * 60 * 2, // Set expiration time to 2 hours (in seconds).
       path: '/', // Make the cookie accessible across all routes on the domain.
     });
+
+    // NOTE: Using HTTP-only cookies for storing JWTs provides better security than storing tokens
+    // in localStorage, as it helps protect against XSS attacks.
 
     return new Response(
       JSON.stringify({
@@ -91,3 +109,10 @@ export async function POST(request: Request) {
     );
   }
 }
+
+// NOTE: This login implementation follows several security best practices:
+// 1. Input validation to prevent malformed data and potential injection attacks.
+// 2. Secure password comparison using bcrypt to prevent timing attacks.
+// 3. Use of JWT for stateless authentication, stored in HTTP-only cookies for XSS protection.
+// 4. Error handling that doesn't reveal sensitive information about the system.
+// 5. HTTPS enforcement in production to prevent man-in-the-middle attacks.

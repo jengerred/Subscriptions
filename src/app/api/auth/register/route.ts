@@ -4,6 +4,9 @@ import { createJWT } from '@/lib/auth'; // Import the function to create JSON We
 import { cookies } from 'next/headers'; // Import Next.js cookies utility for managing HTTP-only cookies.
 import { z } from 'zod'; // Import Zod for schema validation of input data.
 
+// NOTE: We use Zod for input validation because it provides strong typing and runtime checks,
+// helping to prevent injection attacks and ensure data integrity.
+
 export const config = {
   runtime: 'nodejs', // Specify that this API route uses the Node.js runtime instead of Edge.
 };
@@ -19,6 +22,8 @@ const registerSchema = z.object({
     .min(2, 'First name must be at least 2 characters') // Enforce a minimum length of 2 characters for the first name.
     .max(50, 'First name too long'), // Enforce a maximum length of 50 characters for the first name.
 });
+
+// NOTE: These password requirements help ensure strong passwords, reducing the risk of brute-force attacks.
 
 export async function POST(request: Request) {
   try {
@@ -60,8 +65,15 @@ export async function POST(request: Request) {
       firstName,
     });
 
+    // NOTE: We use bcrypt (in the User model) for password hashing because it's designed to be slow,
+    // making it resistant to brute-force attacks. The automatic hashing in the pre-save hook
+    // ensures that passwords are never stored in plain text.
+
     // Generate a JWT token for the new user
     const token = await createJWT(user._id.toString());
+
+    // NOTE: We use jose for JWT creation and verification because it's a modern, secure library
+    // that supports the latest JWT standards and best practices.
 
     // Set a secure HTTP-only cookie with the JWT token
     const cookieStore = await cookies();
@@ -72,6 +84,9 @@ export async function POST(request: Request) {
       maxAge: 60 * 60 * 2, // Set expiration time to 2 hours (in seconds).
       path: '/', // Make the cookie accessible across all routes on the domain.
     });
+
+    // NOTE: Using HTTP-only cookies for storing JWTs provides better security than storing tokens
+    // in localStorage, as it helps protect against XSS attacks.
 
     return new Response(
       JSON.stringify({
@@ -93,3 +108,10 @@ export async function POST(request: Request) {
     );
   }
 }
+
+// NOTE: This code implements several security best practices:
+// 1. Input validation using Zod to prevent injection attacks and ensure data integrity.
+// 2. Password hashing using bcrypt to securely store user passwords.
+// 3. JWT-based authentication using jose for secure token creation and verification.
+// 4. HTTP-only cookies for secure token storage, mitigating XSS risks.
+// 5. Error handling to prevent information leakage about the system's internals.

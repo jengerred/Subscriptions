@@ -4,12 +4,14 @@ import { useState } from 'react'; // Import React's useState hook to manage loca
 import { useRouter } from 'next/navigation'; // Import Next.js router for navigation between pages.
 import { UserIcon, EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline'; // Import icons for UI elements.
 
+// NOTE: This is the main component for the registration page. You can modify its content and styling to fit your needs.
 export default function Register() {
   const router = useRouter(); // Initialize the Next.js router for page navigation.
   const [errorMessages, setErrorMessages] = useState<string[]>([]); // State to store multiple error messages.
   const [isLoading, setIsLoading] = useState(false); // State to track loading status during form submission.
 
   // Function to handle form submission
+  // NOTE: You can modify this function to add additional form validation or data processing before sending to the server.
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default browser behavior of reloading the page on form submission.
     setErrorMessages([]); // Clear any previous error messages.
@@ -18,6 +20,7 @@ export default function Register() {
     const formData = new FormData(e.currentTarget); // Extract form data from the submitted form.
 
     try {
+      // NOTE: Update the API endpoint if you change the route for user registration
       const response = await fetch('/api/auth/register', {
         method: 'POST', // Send a POST request to the registration API endpoint.
         headers: { 'Content-Type': 'application/json' }, // Set headers for JSON payload.
@@ -39,6 +42,7 @@ export default function Register() {
         return; // Exit early if there are errors.
       }
 
+      // NOTE: Update this route if you want to redirect users to a different page after successful registration
       router.push('/dashboard'); // Redirect to the dashboard on successful registration.
     } catch (err: unknown) { // Explicitly type "err" as "unknown" for TypeScript compliance.
       if (err instanceof Error) {
@@ -51,17 +55,21 @@ export default function Register() {
     }
   };
 
+  // NOTE: The following return statement contains the JSX for the registration form.
+  // You can modify the layout, styling, and content to match your design preferences.
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       {/* Outer container for centering content */}
       <div className="w-full max-w-md space-y-8">
         {/* Header Section */}
+        {/* NOTE: Modify the text content here to change the page title and subtitle */}
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900">Create Account</h1> {/* Page title */}
           <p className="mt-2 text-gray-600">Get started with our service</p> {/* Subtitle */}
         </div>
 
         {/* Registration Form */}
+        {/* NOTE: You can add or remove form fields here as needed */}
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-sm">
           {/* First Name Input Field */}
           <div>
@@ -127,6 +135,7 @@ export default function Register() {
           </div>
 
           {/* Error Messages Section */}
+          {/* NOTE: This section displays error messages. You can modify its styling or placement as needed */}
           {errorMessages.length > 0 && (
             <ul className="p-3 text-sm text-red-700 bg-red-50 rounded-md list-disc list-inside">
               {errorMessages.map((msg, index) => (
@@ -136,6 +145,7 @@ export default function Register() {
           )}
 
           {/* Submit Button */}
+          {/* NOTE: You can modify the button's styling or text content here */}
           <button
             type="submit"
             disabled={isLoading} /* Disable button while loading to prevent multiple submissions */
@@ -148,6 +158,7 @@ export default function Register() {
         </form>
 
         {/* Link to Login Page */}
+        {/* NOTE: Update the href if you change the route for the login page */}
         <p className="text-center text-sm text-gray-600">
           Already have an account?{' '}
           <a href="/login" className="font-medium text-blue-600 hover:text-blue-500">
@@ -158,3 +169,11 @@ export default function Register() {
     </div>
   );
 }
+
+// GENERAL NOTES:
+// 1. This component uses Tailwind CSS for styling. You can modify the classes to change the appearance.
+// 2. The form layout is responsive and centered on the page. Adjust the classes if you need a different layout.
+// 3. Error handling is built-in, displaying messages from the server or client-side validation.
+// 4. The loading state is managed to provide user feedback during form submission.
+// 5. You can add additional form fields or modify existing ones based on your registration requirements.
+// 6. Remember to update any API endpoints or routes if you change your backend structure.
