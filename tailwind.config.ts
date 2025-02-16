@@ -1,25 +1,18 @@
-// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 export default {
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundColor: {
-        DEFAULT: "var(--background)",
-      },
-      textColor: {
-        DEFAULT: "var(--foreground)",
-      },
-      fontFamily: {
-        sans: ["Arial", "Helvetica", "sans-serif"],
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
       },
     },
   },
-  darkMode: "media",
   plugins: [],
 } satisfies Config;
