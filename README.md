@@ -72,7 +72,7 @@ npm install
 #### 3. Configure Environment Variables
 Create a `.env.local` file in the root directory and add the following variables:
 ```plaintext
-MONGODB_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 NODE_ENV=production
 Runtime=nodejs
