@@ -127,7 +127,7 @@ You can view the live version of this project here:
 ---
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
 
 ### Commercial Use
 While this project is free for personal and educational use under the MIT License, commercial use requires purchasing a license.  
