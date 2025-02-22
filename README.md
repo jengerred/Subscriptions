@@ -1,4 +1,4 @@
-# Reusable NEXT.js User Authentication System
+# 🔐 Reusable NEXT.js User Authentication System
 
 ## **Overview**
 This repository contains a secure, reusable authentication system built with **NEXT.js**, **MongoDB**, and **Vercel**. The project demonstrates best practices in mobile and web application security, including password hashing, token-based authentication, and data encryption. It adheres to industry standards like the **OWASP Mobile Application Security Verification Standard (MASVS)** and integrates robust security measures to protect user data.
@@ -10,41 +10,31 @@ This system supports:
 - **Encrypted Data Storage**: Use AES-256 encryption for sensitive data stored in MongoDB.
 - **Scalability**: Designed to support additional features like Multi-Factor Authentication (MFA) and AI-driven threat detection.
 
-## **Why This Project is Secure**
-1. **Password Security**:
-   - Passwords are hashed using bcrypt with a salt to prevent brute-force attacks.
-   - Plaintext passwords are never stored in the database.
+---
 
-2. **Session Management**:
-   - JWT tokens are used for session management, signed with HMAC-SHA256.
-   - Tokens include expiration policies to mitigate session hijacking risks.
-
-3. **Data Encryption**:
-   - MongoDB stores sensitive user data encrypted with AES-256.
-   - Data transmitted between the client and server is secured using HTTPS/TLS 1.3.
-
-4. **Protected Routes**:
-   - Only authenticated users with valid JWT tokens can access protected pages like the dashboard.
-
-5. **Compliance with Standards**:
-   - Adheres to OWASP MASVS Level 2 requirements for secure authentication mechanisms.
-   - Implements secure coding practices to address vulnerabilities like improper credential storage (OWASP M1) and insecure communication (OWASP M2).
+## **How to Use This Authentication System**
+1. Register a new account on the registration page.
+2. Log in using your credentials; your password will be securely hashed before being stored in the database.
+3. Upon successful login, you’ll receive a JWT token that grants access to protected routes like the dashboard.
+4. Use this system as a foundation for any app requiring secure user authentication, such as e-commerce platforms or social media apps.
 
 ---
 
-## **Future Enhancements**
-To further enhance security, the following features can be implemented:
-1. **Multi-Factor Authentication (MFA)**:
-   Add an extra layer of security by requiring users to verify their identity through a second factor, such as an SMS code or biometric verification.
+## **Live Demo**
+You can view the live version of this project here:  
+[Live Demo](https://reusable-next-user-auth-woad.vercel.app/)
+> If you don't want to register a new account use:
+> * **email:** user@email.com
+> * **password:** 12+Character
 
-2. **AI-Driven Threat Detection**:
-   Integrate machine learning models to detect anomalies in login patterns or suspicious activities in real time.
+---
 
-3. **Role-Based Access Control (RBAC)**:
-   Implement fine-grained access control to restrict specific actions based on user roles (e.g., admin vs. regular user).
+## License
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
 
-4. **Zero Trust Architecture**:
-   Continuously validate user identities and device integrity before granting access to resources.
+### Commercial Use
+While this project is **FREE for personal and educational use** under the MIT License, **commercial use requires purchasing a license**.  
+Visit [Buy Commercial License](https://gumroad.com/your-link) for details.
 
 ---
 
@@ -209,6 +199,43 @@ To deploy this project using Vercel:
 By following these steps, your application will be live and ready for use!
 
 ---
+## **Why This Project is Secure**
+1. **Password Security**:
+   - Passwords are hashed using bcrypt with a salt to prevent brute-force attacks.
+   - Plaintext passwords are never stored in the database.
+
+2. **Session Management**:
+   - JWT tokens are used for session management, signed with HMAC-SHA256.
+   - Tokens include expiration policies to mitigate session hijacking risks.
+
+3. **Data Encryption**:
+   - MongoDB stores sensitive user data encrypted with AES-256.
+   - Data transmitted between the client and server is secured using HTTPS/TLS 1.3.
+
+4. **Protected Routes**:
+   - Only authenticated users with valid JWT tokens can access protected pages like the dashboard.
+
+5. **Compliance with Standards**:
+   - Adheres to OWASP MASVS Level 2 requirements for secure authentication mechanisms.
+   - Implements secure coding practices to address vulnerabilities like improper credential storage (OWASP M1) and insecure communication (OWASP M2).
+
+---
+
+## **Future Enhancements**
+To further enhance security, the following features can be implemented:
+1. **Multi-Factor Authentication (MFA)**:
+   Add an extra layer of security by requiring users to verify their identity through a second factor, such as an SMS code or biometric verification.
+
+2. **AI-Driven Threat Detection**:
+   Integrate machine learning models to detect anomalies in login patterns or suspicious activities in real time.
+
+3. **Role-Based Access Control (RBAC)**:
+   Implement fine-grained access control to restrict specific actions based on user roles (e.g., admin vs. regular user).
+
+4. **Zero Trust Architecture**:
+   Continuously validate user identities and device integrity before granting access to resources.
+
+---
 
 ## Want to Learn How To Create this Yourself?
 To help others recreate this project, I’ve created a detailed tutorial that walks through every step of building this authentication system **from scratch**. The tutorial covers:
@@ -223,26 +250,7 @@ You can find the tutorial [here](https://github.com/jengerred/Reusable-NEXT-User
 
 ---
 
-## **How to Use This Authentication System**
-1. Register a new account on the registration page.
-2. Log in using your credentials; your password will be securely hashed before being stored in the database.
-3. Upon successful login, you’ll receive a JWT token that grants access to protected routes like the dashboard.
-4. Use this system as a foundation for any app requiring secure user authentication, such as e-commerce platforms or social media apps.
 
----
-
-## **Live Demo**
-You can view the live version of this project here:  
-[Live Demo](https://reusable-next-user-auth-woad.vercel.app/)
-
----
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
-
-### Commercial Use
-While this project is free for personal and educational use under the MIT License, commercial use requires purchasing a license.  
-Visit [Buy Commercial License](https://gumroad.com/your-link) for details.
 
 
 
