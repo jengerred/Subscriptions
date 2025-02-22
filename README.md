@@ -124,3 +124,15 @@ You can find the tutorial [here](https://github.com/jengerred/Reusable-NEXT-User
 You can view the live version of this project here:  
 [Live Demo](https://reusable-next-user-auth-woad.vercel.app/)
 
+---
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+### Commercial Use
+While this project is free for personal and educational use under the MIT License, commercial use requires purchasing a license.  
+Visit [Buy Commercial License](https://gumroad.com/your-link) for details.
+
+
+
+
