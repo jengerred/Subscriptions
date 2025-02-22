@@ -23,7 +23,7 @@ This system supports:
 ## **Live Demo**
 You can view the live version of this project here:  
 [Live Demo](https://reusable-next-user-auth-woad.vercel.app/)
-> If you don't want to register a new account use:
+> If you don't want to register a new account login using:
 > * **email:** user@email.com
 > * **password:** 12+Character
 
