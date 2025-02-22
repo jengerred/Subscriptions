@@ -50,12 +50,19 @@ To further enhance security, the following features can be implemented:
 
 ## **How to Use This Repository**
 
-### 🛠️ Tools You'll Need  
+## 🛠️ Tools You'll Need  
+To get started with this project, you'll need the following tools:
 
-1. [Visual Studio Code](https://code.visualstudio.com/) – Code editor for writing and managing your project files.  
-2. [Node.js (v20)](https://nodejs.org/en/) – JavaScript runtime environment for running server-side code. Make sure to install version 20 or later.  
-3. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) – Cloud-based database to securely store user data. Sign up for a free account.  
-4. [Vercel](https://vercel.com/) – Deployment platform for hosting your application. Sign up or log in to deploy your app.
+1. **Download and Install:** [Visual Studio Code](https://code.visualstudio.com/) – Code editor for writing and managing your project files.  
+
+2. **Download and Install:** [Node.js (LTS)](https://nodejs.org/en/) – A JavaScript runtime environment for running server-side code. Make sure to install version 20 or later.  
+
+3. **Sign up or Sign in:** [MongoDB Atlas (Database)](https://www.mongodb.com/cloud/atlas) – Cloud-based database to securely store user data.  
+
+4. **Sign up or Sign in:** [GitHub](https://github.com/) – A platform for hosting and collaborating on code repositories. You’ll use GitHub to push your project and deploy it with Vercel.  
+
+5. **Sign up or Sign in:** [Vercel](https://vercel.com/) – Deployment platform for hosting your application.
+
 
 
 ### Setup Instructions
@@ -102,7 +109,7 @@ To deploy this project using Vercel:
 
 ---
 
-## **Step-by-Step Tutorial**
+## **Want to Learn How To Create this Yourself?**
 To help others recreate this project, I’ve created a detailed tutorial that walks through every step of building this authentication system from scratch. The tutorial covers:
 1. Setting up a NEXT.js project.
 2. Connecting MongoDB for secure data storage.
