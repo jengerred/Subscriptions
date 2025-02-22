@@ -88,7 +88,7 @@ npm install
 1. Create a `.env.local` file in the root directory of your project by typing the following command in your terminal:  
 > touch .env.local
 
- 2. Add the following variables to your newly created `.env.local` file:
+ 2. Add the following variables to your newly created `.env.local` file (replace with your connection string and secret key):
 ```plaintext
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
@@ -144,10 +144,72 @@ Visit `http://localhost:3000` in your browser to view the app.
 
 ## Deployment
 To deploy this project using Vercel:
-1. Push your repository to GitHub.
-2. Log in to [Vercel](https://vercel.com/) and import your repository.
-3. Add the environment variables (`MONGODB_URI`, `JWT_SECRET`, `NODE_ENV`, `Runtime`) in Vercel's dashboard under "Environment Variables."
-4. Deploy your project with one click!
+<details>
+<summary>1. Push your repository to GitHub.</summary>
+
+1. **Initialize a Git Repository**  
+   Open your terminal in the project directory and run the following commands:
+   ```
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+2. **Create a New Repository on GitHub**  
+   - Go to [GitHub](https://github.com/) and log in.  
+   - Click on the "+" icon in the top-right corner → Select "New Repository."  
+   - Name your repository (e.g., `user-auth`) and click "Create Repository."
+
+3. **Link Your Local Repository to GitHub**  
+   Copy the repository URL from GitHub and run:
+   ```
+   git remote add origin 
+   git branch -M main
+   git push -u origin main
+   ```
+
+---
+<details>
+<summary>2. Deploy Your Project to Vercel and add Environment Variables:</summary>
+
+1. **Sign Up or Log In to Vercel**  
+   Go to [Vercel](https://vercel.com/) and sign up or log in.
+
+2. **Import Your GitHub Repository**  
+   - Click on "New Project" in Vercel.  
+   - Select "Import Git Repository."  
+   - Choose your `user-auth` repository from GitHub.
+
+3. **Configure Environment Variables**  
+   During the setup process, you'll be prompted to add environment variables. Add the following from your `.env.local` file:
+   ```
+   NODE_ENV=production
+   Runtime=nodejs
+   MONGO_URI=
+   JWT_SECRET=
+   ```
+   Ensure these match the values in your `.env.local` file.
+
+4. **Deploy Your Application**  
+   Click "Deploy," and Vercel will build and deploy your application. Once complete, you'll receive a live URL for your app.
+
+---
+
+### Verify Deployment
+
+1. Visit the live URL provided by Vercel.
+2. Test all routes (`/login`, `/register`, `/dashboard`) to ensure they work as expected.
+3. Check your MongoDB Atlas database to confirm that user data is being stored correctly.
+
+By following these steps, your application will be live and ready for use!
+```
+
+Citations:
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/32607226/f2d1bf1e-e2be-4fe7-a708-e3a84057318e/paste.txt
+[2] https://pplx-res.cloudinary.com/image/upload/v1740176947/user_uploads/MTCoKQwFuWqiIuO/image.jpg
+3. Log in to [Vercel](https://vercel.com/) and import your repository.
+4. Add the environment variables (`MONGODB_URI`, `JWT_SECRET`, `NODE_ENV`, `Runtime`) in Vercel's dashboard under "Environment Variables."
+5. Deploy your project with one click!
 
 ---
 
