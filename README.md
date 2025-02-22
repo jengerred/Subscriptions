@@ -144,8 +144,9 @@ Visit `http://localhost:3000` in your browser to view the app.
 
 ## Deployment
 To deploy this project using Vercel:
+### 1. Push your repository to GitHub
 <details>
-<summary>1. Push your repository to GitHub.</summary>
+<summary>How to push repository to Gitub:</summary>
 
 1. **Initialize a Git Repository**  
    Open your terminal in the project directory and run the following commands:
@@ -167,10 +168,13 @@ To deploy this project using Vercel:
    git branch -M main
    git push -u origin main
    ```
+</details>
 
 ---
+
+### 2. Deploy Your Project to Vercel and add Environment Variables:
 <details>
-<summary>2. Deploy Your Project to Vercel and add Environment Variables:</summary>
+<summary>How to Deploy to Vercel and Add Environment Variables:</summary>
 
 1. **Sign Up or Log In to Vercel**  
    Go to [Vercel](https://vercel.com/) and sign up or log in.
@@ -192,24 +196,17 @@ To deploy this project using Vercel:
 
 4. **Deploy Your Application**  
    Click "Deploy," and Vercel will build and deploy your application. Once complete, you'll receive a live URL for your app.
+</details>
 
 ---
 
-### Verify Deployment
+### 3. Verify Deployment
 
 1. Visit the live URL provided by Vercel.
 2. Test all routes (`/login`, `/register`, `/dashboard`) to ensure they work as expected.
 3. Check your MongoDB Atlas database to confirm that user data is being stored correctly.
 
 By following these steps, your application will be live and ready for use!
-```
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/32607226/f2d1bf1e-e2be-4fe7-a708-e3a84057318e/paste.txt
-[2] https://pplx-res.cloudinary.com/image/upload/v1740176947/user_uploads/MTCoKQwFuWqiIuO/image.jpg
-3. Log in to [Vercel](https://vercel.com/) and import your repository.
-4. Add the environment variables (`MONGODB_URI`, `JWT_SECRET`, `NODE_ENV`, `Runtime`) in Vercel's dashboard under "Environment Variables."
-5. Deploy your project with one click!
 
 ---
 
