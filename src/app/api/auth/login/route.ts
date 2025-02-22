@@ -14,7 +14,7 @@ export const config = {
 // Define a schema for validating login input using Zod
 const loginSchema = z.object({
   email: z.string().email('Invalid email format'), // Validate email format and return a custom error message if invalid.
-  password: z.string().min(8, 'Password must be at least 12 characters long'), // Ensure password is at least 12 characters long.
+  password: z.string().min(12, 'Password must be at least 12 characters long'), // Ensure password is at least 12 characters long.
 });
 
 // NOTE: Input validation is crucial for security. It helps prevent malformed data from reaching
