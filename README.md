@@ -50,48 +50,90 @@ To further enhance security, the following features can be implemented:
 
 ## **How to Use This Repository**
 
-## 🛠️ Tools You'll Need  
+### 🛠️ Tools You'll Need  
 To get started with this project, you'll need the following tools:
 
-1. **Download and Install:** [Visual Studio Code](https://code.visualstudio.com/) – Code editor for writing and managing your project files.  
+#### 1. **Download and Install:** [Visual Studio Code](https://code.visualstudio.com/) 
+   > Code editor for writing and managing your project files.  
 
-2. **Download and Install:** [Node.js (LTS)](https://nodejs.org/en/) – A JavaScript runtime environment for running server-side code. Make sure to install version 20 or later.  
+#### 2. **Download and Install:** [Node.js (LTS)](https://nodejs.org/en/) 
+   > A JavaScript runtime environment for running server-side code. Make sure to install version 20 or later.  
 
-3. **Sign up or Sign in:** [MongoDB Atlas (Database)](https://www.mongodb.com/cloud/atlas) – Cloud-based database to securely store user data.  
+#### 3. **Sign up or Sign in:** [MongoDB Atlas (Database)](https://www.mongodb.com/cloud/atlas) 
+   > Cloud-based database to securely store user data.  
 
-4. **Sign up or Sign in:** [GitHub](https://github.com/) – A platform for hosting and collaborating on code repositories. You’ll use GitHub to push your project and deploy it with Vercel.  
+#### 4. **Sign up or Sign in:** [GitHub](https://github.com/) 
+   > A platform for hosting and collaborating on code repositories. You’ll use GitHub to push your project and deploy it with Vercel.  
 
-5. **Sign up or Sign in:** [Vercel](https://vercel.com/) – Deployment platform for hosting your application.
+#### 5. **Sign up or Sign in:** [Vercel](https://vercel.com/) 
+   > Deployment platform for hosting your application.
 
+---
 
-
-### Setup Instructions
+## Setup Instructions
 Follow these steps to set up the project locally:
 
-#### 1. Clone the Repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/jengerred/Reusable-NEXT-User-Auth.git
 cd Reusable-NEXT-User-Auth
 ```
 
-#### 2. Install Dependencies
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-#### 3. Configure Environment Variables
-Create a `.env.local` file in the root directory and add the following variables:
+### 3. Configure Environment Variables
+1. Create a `.env.local` file in the root directory of your project by typing the following command in your terminal:  
+> touch .env.local
+
+ 2. Add the following variables to your newly created `.env.local` file:
 ```plaintext
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 NODE_ENV=production
 Runtime=nodejs
 ```
+<details>
+<summary>How to Get Your MongoDB Connection String</summary>
+ 
+   
+  #### - 1. Sign up or log in to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+  
+  **- 2. Create a new cluster** (free tier available).
+  
+  **- 3.** Under "**Database Access**," create a **database user** with a **username** and **password.**
+  
+  **- 4.** Under "**Network Access**," **allow access** from your IP address or `0.0.0.0/0` (for development).
+  
+  **- 5. Click "Connect" → "Drivers" → Copy the connection string** (e.g., `mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`).
+  
+  **- 6. Replace** `<username>`, `<password>`, and `<dbname>` with your actual database credentials.
+  
+  **- 7.** Replace **`your_mongodb_connection_string`** in **`.env.local`** with **your connection string**.
+    </details>
+    
+  ---
+  
+<details>
+<summary>How to Generate a Secure JWT Secret Key:</summary> 
+   
+   
+  #### - 1. Open your terminal in the project directory.
+   
+  **- 2.** Run the following command to **generate a secure random key**:  
+     ```
+     node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+     ```
+     
+  **- 3. Copy the output and paste it** into `JWT_SECRET` in your `.env.local` file.
+  
+</details>
 
-#### 4. Connect MongoDB
-Set up a MongoDB database (e.g., using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)) and replace `your_mongodb_connection_string` in `.env.local` with your connection string.
+---
 
-#### 5. Run the Development Server
+### 4. Run the Development Server
 Start the development server locally:
 ```bash
 npm run dev
@@ -100,7 +142,7 @@ Visit `http://localhost:3000` in your browser to view the app.
 
 ---
 
-## **Deployment**
+## Deployment
 To deploy this project using Vercel:
 1. Push your repository to GitHub.
 2. Log in to [Vercel](https://vercel.com/) and import your repository.
@@ -109,8 +151,8 @@ To deploy this project using Vercel:
 
 ---
 
-## **Want to Learn How To Create this Yourself?**
-To help others recreate this project, I’ve created a detailed tutorial that walks through every step of building this authentication system from scratch. The tutorial covers:
+## Want to Learn How To Create this Yourself?
+To help others recreate this project, I’ve created a detailed tutorial that walks through every step of building this authentication system **from scratch**. The tutorial covers:
 1. Setting up a NEXT.js project.
 2. Connecting MongoDB for secure data storage.
 3. Implementing bcrypt for password hashing.
