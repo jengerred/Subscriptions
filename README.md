@@ -50,10 +50,13 @@ To further enhance security, the following features can be implemented:
 
 ## **How to Use This Repository**
 
-### Prerequisites
-- Node.js installed on your system.
-- A MongoDB database (local or cloud-based).
-- A Vercel account for deployment.
+### 🛠️ Tools You'll Need  
+
+1. [Visual Studio Code](https://code.visualstudio.com/) – Code editor for writing and managing your project files.  
+2. [Node.js (v20)](https://nodejs.org/en/) – JavaScript runtime environment for running server-side code. Make sure to install version 20 or later.  
+3. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) – Cloud-based database to securely store user data. Sign up for a free account.  
+4. [Vercel](https://vercel.com/) – Deployment platform for hosting your application. Sign up or log in to deploy your app.
+
 
 ### Setup Instructions
 Follow these steps to set up the project locally:
