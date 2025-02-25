@@ -1,4 +1,4 @@
-# 🔐 Reusable NEXT.js User Authentication System
+# 🔐 Reusable NEXT.js User Authentication System + Banking UI
 
 ## **Overview**
 This repository contains a secure, reusable authentication system built with **NEXT.js**, **MongoDB**, and **Vercel**. The project demonstrates best practices in mobile and web application security, including password hashing, token-based authentication, and data encryption. It adheres to industry standards like the **OWASP Mobile Application Security Verification Standard (MASVS)** and integrates robust security measures to protect user data.
