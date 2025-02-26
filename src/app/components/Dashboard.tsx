@@ -14,11 +14,12 @@ const SpendingChart = dynamic(() => import("./SpendingChart"), {
 
     interface DashboardProps {
       user: {
-        firstName: string; 
+        _id: string; // Explicit string type
+        firstName: string;
         email: string;
-        createdAt: Date;
-      };
-    }
+        createdAt: string;
+    };
+  }
     
     export default function Dashboard({ user }: DashboardProps) {
     const [activeCard, setActiveCard] = useState<string | null>(null);
