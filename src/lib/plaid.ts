@@ -1,14 +1,15 @@
-// lib/plaid.ts
+// src/lib/plaid.ts
 import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
 
 const configuration = new Configuration({
-  basePath: PlaidEnvironments[process.env.PLAID_ENV!],
+  basePath: PlaidEnvironments.sandbox,
   baseOptions: {
     headers: {
-      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID,
-      'PLAID-SECRET': process.env.PLAID_SECRET,
-    },
-  },
+      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID!,
+      'PLAID-SECRET': process.env.PLAID_SECRET!,
+      'Plaid-Version': '2020-09-14'  // Required API version
+    }
+  }
 });
 
 export const plaidClient = new PlaidApi(configuration);

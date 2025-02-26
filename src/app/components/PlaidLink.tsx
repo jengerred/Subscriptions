@@ -1,6 +1,7 @@
 // components/PlaidLink.tsx
 'use client';
 import { usePlaidLink } from 'react-plaid-link';
+import { useState, useEffect } from 'react';
 
 export default function PlaidLink({ onSuccess }: { onSuccess: (token: string) => void }) {
   const [linkToken, setLinkToken] = useState<string>();
