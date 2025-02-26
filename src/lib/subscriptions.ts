@@ -1,6 +1,7 @@
 // lib/subscriptions.ts
 import { plaidClient } from './plaid';
 import Stripe from 'stripe';
+import { RecurringTransfer } from 'plaid';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -9,7 +10,7 @@ interface DetectedSubscription {
   amount: number;
   interval: string;
   status: 'active' | 'canceled';
-  plaidData: any;
+  plaidData: RecurringTransfer;
   stripeId?: string;
 }
 
